@@ -32,7 +32,8 @@ exports['grunt-grunticon'] = {
 
 		var actual = grunt.file.read('example/output/grunticon.loader.js');
 		var expected = grunt.file.read('test/expected/grunticon.loader.js');
-		test.equal(actual, expected, 'loader should match properly');
+		// adding this newline because the generated file doesn't end with one
+		test.equal(actual + "\n", expected, 'loader should match properly');
 
 		test.done();
 	}
