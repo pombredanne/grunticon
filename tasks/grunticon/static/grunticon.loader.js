@@ -45,7 +45,7 @@ window.grunticon = function( css, foo ){
 
 			if( svgss ){
 				var icons = {};
-				var rules = svgss.rules; //cssRules better?
+				var rules = svgss.cssRules ? svgss.cssRules : svgss.rules;
 				for( i = 0; i < rules.length; i++ ){
 					var cssText = rules[ i ].cssText;
 					var iconSelector = cssText.split( "{" )[ 0 ].split( "," ).pop();
