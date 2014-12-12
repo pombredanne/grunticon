@@ -77,8 +77,6 @@ window.grunticon = function( css, foo ){
 		},
 
 		ready = function( fn ){
-			// If DOM is already ready at exec time, depends on the browser.
-			// From: https://github.com/mobify/mobifyjs/blob/526841be5509e28fc949038021799e4223479f8d/src/capture.js#L128
 			var ran = false;
 			function callback(){
 				if( !ran ){
@@ -86,18 +84,12 @@ window.grunticon = function( css, foo ){
 				}
 				ran = true;
 			}
-			if ( w.document.attachEvent ? w.document.readyState === "complete" : w.document.readyState !== "loading" ) {
+			// If DOM is already ready at exec time, depends on the browser.
+			// From: https://github.com/mobify/mobifyjs/blob/526841be5509e28fc949038021799e4223479f8d/src/capture.js#L128
+			if ( w.document.readyState !== "loading" ) {
 				fn();
-			} else {
-				if( !w.document.addEventListener ){
-					w.document.attachEvent( "DOMContentLoaded", fn );
-					w.document.attachEvent( "onreadystatechange", fn );
-					w.attachEvent( "onload", fn );
-				} else {
-					w.document.addEventListener( "DOMContentLoaded", fn, false );
-					w.document.addEventListener( "readystatechange", fn, false );
-					w.addEventListener( "load", fn, false );
-				}
+			} else if( w.document.addEventListener ){
+				w.document.addEventListener( "DOMContentLoaded", fn, false );
 			}
 		},
 
