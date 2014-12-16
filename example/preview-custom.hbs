@@ -20,43 +20,7 @@
 	</head>
 	<body>
 
-		<h1>CUSTOM PREVIEW - you can change this in the previewTemplate option</h1>
-		{{#each icons}}
-			{{#with this}}
-			<pre><code>{{prefix}}{{name}}:</code></pre><div class="{{prefixClass}}{{name}}" style="width: {{width}}px; height: {{height}}px;" ></div><hr/>
-			{{/with}}
-		{{/each}}
 
-		<h2>Embedded SVG option</h2>
-		<p>(The <code>data-grunticon-embed</code> attribute tells grunticon to inject SVG inline):</p>
-
-		<pre><code>icon-burger:</code></pre><div class="icon-burger" data-grunticon-embed style="width: {{width}}px; height: {{height}}px;" ></div><hr/>
-
-		<style>
-			.icon-burger {
-				width: 32px;
-				height: 30px;
-				display: inline-block;
-			}
-			  .icon-burger.alt .cheese {
-		                fill: red;
-		            }
-				 .icon-burger.alt .buns {
-		                fill: orange;
-		            }
-				  .icon-burger.alt .burger {
-		                fill: yellow;
-		            }
-		 		 .icon-burger.alt .lettuce {
-		                fill: green;
-		            }
-
-		</style>
-
-		<pre><code>icon-burger (styled variation):</code></pre><div class="icon-burger alt" data-grunticon-embed></div><hr/>
-
-
-		<h2>Templated "Use" SVG option</h2>
 		<style>
 			.icon-disc-arrow,
 			.icon-disc-plus,
@@ -78,12 +42,23 @@
 			}
 
 		</style>
-		<p>(The <code>data-grunticon-use</code> attribute tells grunticon to create an SVG as a `defs` symbol for reuse, and inject a <code>use</code> reference to that icon inside elements referencing that symbol):</p>
-		<pre><code>icon-disc-arrow:</code></pre><a href="#" class="icon-disc-arrow" data-grunticon-use></a><hr/>
 
 
-		<pre><code>icon-disc-plus:</code></pre><a href="#" class="icon-disc-plus" data-grunticon-use></a><hr/>
+		<p>Embed perf test</p>
 
+		{{#each icons}}
+			{{#with this}}
+						<pre><code>icon-disc-plus:</code></pre><a href="#" class="icon-disc-plus" data-grunticon-embed></a><hr/>
+						<pre><code>icon-disc-plus:</code></pre><a href="#" class="icon-disc-plus" data-grunticon-embed></a><hr/>
+						<pre><code>icon-disc-plus:</code></pre><a href="#" class="icon-disc-plus" data-grunticon-embed></a><hr/>
+						<pre><code>icon-disc-plus:</code></pre><a href="#" class="icon-disc-plus" data-grunticon-embed></a><hr/>
+						<pre><code>icon-disc-plus:</code></pre><a href="#" class="icon-disc-plus" data-grunticon-embed></a><hr/>
+						<pre><code>icon-disc-plus:</code></pre><a href="#" class="icon-disc-plus" data-grunticon-embed></a><hr/>
+
+
+
+			{{/with}}
+		{{/each}}
 
 </body>
 </html>
